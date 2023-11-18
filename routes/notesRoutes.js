@@ -1,12 +1,12 @@
 const express = require("express")
 const router = express.Router();
-const { AddNote } = require("../controller/index.js")
+const { AddNote, GetNotes } = require("../controller/index.js")
 //Create Notes...   
 
 
 
 router.post("/addnote", AddNote)
-router.get("/getnotes",)
+router.get("/getnotes", GetNotes)
 
 
 

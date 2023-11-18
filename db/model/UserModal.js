@@ -17,6 +17,7 @@ const Notes = new mongoose.Schema({
     },
     postedBy: {
         type: String,
+        date: Date.now()
     }
 
 }, { timestamps: true })
