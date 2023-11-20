@@ -9,7 +9,7 @@ const AddNote = async (req, res) => {
 
     try {
 
-        const note = new UserModal({
+        const note = await new UserModal({
             title: title,
             description: description
         })
@@ -25,15 +25,35 @@ const AddNote = async (req, res) => {
 
 
 const GetNotes = async (req, res) => {
+    const noteId = req.params.id;
 
     try {
-        console.log("req.params", req.params)
+        const getNote = await UserModal.findById(noteId);
+        console.log("GetNote", getNote);
+
+        if (!getNote) {
+            return res.status(404).json({ message: "Note not found", success: false });
+        }
+
+        res.status(200).json({ message: "Read Successfully", success: true, data: getNote });
+
     } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: "Server Error", success: false });
+    }
+}
 
+const updateNode = async () => {
+
+    try {
+        const updateNodeId = req.params.id;
+        const updateNode = await UserModal.findByIdAndUpdate(updateNodeId)
+        console.log("UpdateNode", updateNode)
+
+    } catch (error) {
         console.log(error)
-
     }
 
 }
 
-module.exports = { AddNote, GetNotes };
+module.exports = { AddNote, GetNotes, updateNode };

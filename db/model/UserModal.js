@@ -15,6 +15,7 @@ const Notes = new mongoose.Schema({
         max: 200,
         required: true
     },
+
     postedBy: {
         type: String,
         date: Date.now()
