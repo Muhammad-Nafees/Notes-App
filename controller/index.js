@@ -48,7 +48,7 @@ const updateNode = async () => {
     try {
         const updateNodeId = req.params.id;
         const updateNode = await UserModal.findByIdAndUpdate(updateNodeId)
-        console.log("UpdateNode", updateNode)
+        // console.log("UpdateNode", updateNode)
 
     } catch (error) {
         console.log(error)
